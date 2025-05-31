@@ -1,115 +1,342 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Croc - Menu</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cardápio Croc - Delícias para você</title>
+<style>
+  :root {
+    --cor-fundo: #f9f7f1;
+    --cor-texto: #4b3b2b;
+    --cor-destaque: #b68f40;
+    --cor-cinza-claro: #ddd6ca;
+    --cor-hover: #d7c6a3;
+    --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    background-color: white;
+    border-bottom: 2px solid var(--cor-cinza-claro);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 0.05);
+  }
+
+  nav {
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: var(--cor-texto);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+    border-bottom: 3px solid transparent;
+    transition: border-color 0.3s ease, color 0.3s ease;
+  }
+
+  nav a:hover,
+  nav a:focus {
+    color: var(--cor-destaque);
+    border-color: var(--cor-destaque);
+    outline: none;
+  }
+
+  main {
+    max-width: 1200px;
+    margin: 4rem auto 3rem auto;
+    padding: 0 1rem;
+    flex-grow: 1;
+  }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--cor-destaque);
+    font-weight: 900;
+    font-size: 2.5rem;
+  }
+
+  /* Categorias do cardápio */
+  .categoria {
+    margin-bottom: 3rem;
+  }
+
+  .categoria h2 {
+    font-size: 2rem;
+    border-bottom: 3px solid var(--cor-destaque);
+    padding-bottom: 0.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .itens-cardapio {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+  }
+
+  .item {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .item:hover,
+  .item:focus-within {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 20px rgb(0 0 0 / 0.15);
+    outline: none;
+  }
+
+  .item img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .info-item {
+    padding: 1rem 1.2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .nome-item {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--cor-destaque);
+    margin-bottom: 0.4rem;
+  }
+
+  .descricao-item {
+    font-size: 1rem;
+    color: var(--cor-texto);
+    margin-bottom: 0.7rem;
+    flex-grow: 1;
+  }
+
+  .btn-pedir {
+    background-color: var(--cor-destaque);
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.5rem 1.2rem;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-pedir:hover,
+  .btn-pedir:focus {
+    background-color: #a3782c;
+    outline: none;
+  }
+
+  footer {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    background: var(--cor-cinza-claro);
+    color: var(--cor-texto);
+    font-size: 0.9rem;
+  }
+
+  /* Responsividade */
+  @media (max-width: 480px) {
+    nav {
+      gap: 1rem;
+    }
+    nav a {
+      font-size: 0.9rem;
+    }
+    .item img {
+      height: 120px;
+    }
+    h1 {
+      font-size: 1.8rem;
+    }
+    .categoria h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
 </head>
 <body>
-  <div id="root"></div>
+<header>
+  <nav aria-label="Menu principal">
+    <a href="index.html" tabindex="0">Frangos assados</a>
+    <a href="salgados.html" tabindex="0">Salgados assados</a>
+    <a href="cafe.html" tabindex="0">Café da manhã</a>
+    <a href="tempo-limitado.html" tabindex="0">Por tempo limitado</a>
+    <a href="linha-croc.html" tabindex="0">Linha Croc por tamanho</a>
+    <a href="empresas.html" tabindex="0">Para empresas/eventos</a>
+  </nav>
+</header>
 
-  <!-- React, ReactDOM e Babel via CDN -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<main>
+  <h1>Cardápio Croc</h1>
 
-  <script type="text/babel">
-    const Header = () => (
-      <header>
-        <div className="container header-container">
-          <div className="logo">CROC</div>
-          <nav>
-            <a href="index.html">Início</a>
-            <a href="menu.html" className="active">Menu</a>
-            <a href="galeria.html">Galeria</a>
-            <a href="contato.html">Contato</a>
-          </nav>
+  <!-- Categoria Frangos assados -->
+  <section class="categoria" aria-label="Frangos assados">
+    <h2>Frangos assados</h2>
+    <div class="itens-cardapio">
+      <article class="item" tabindex="0">
+        <img src="imagens/frango1.jpg" alt="Frango assado tradicional" />
+        <div class="info-item">
+          <h3 class="nome-item">Frango Assado Tradicional</h3>
+          <p class="descricao-item">Frango temperado com ervas finas e assado até dourar.</p>
+          <a href="https://wa.me/5511999999999?text=Olá,%20quero%20fazer%20pedido%20do%20Frango%20Assado%20Tradicional" class="btn-pedir" target="_blank" rel="noopener">Peça Agora</a>
         </div>
-      </header>
-    );
+      </article>
 
-    const MenuItem = ({ img, title, description, price }) => (
-      <div className="card menu-card">
-        <img src={img} alt={title} />
-        <div className="menu-info">
-          <h3>{title}</h3>
-          <p>{description}</p>
-          <span className="price">R$ {price}</span>
+      <article class="item" tabindex="0">
+        <img src="imagens/frango2.jpg" alt="Frango assado com limão e alho" />
+        <div class="info-item">
+          <h3 class="nome-item">Frango com Limão e Alho</h3>
+          <p class="descricao-item">Sabor cítrico e aroma marcante, perfeito para festas.</p>
+          <a href="https://wa.me/5511999999999?text=Olá,%20quero%20fazer%20pedido%20do%20Frango%20com%20Limão%20e%20Alho" class="btn-pedir" target="_blank" rel="noopener">Peça Agora</a>
         </div>
-      </div>
-    );
+      </article>
+    </div>
+  </section>
 
-    const Menu = () => (
-      <section className="menu container">
-        <h2>Nosso Cardápio</h2>
-        <div className="cards">
-          <MenuItem
-            img="https://images.unsplash.com/photo-1606755962778-bb4c882c7d88?q=80&w=1400"
-            title="Hambúrguer Artesanal"
-            description="Carne suculenta, queijo derretido e pão fresquinho."
-            price="32,90"
-          />
-          <MenuItem
-            img="https://images.unsplash.com/photo-1598515214121-913e6e165f7f?q=80&w=1400"
-            title="Pizza Crocante"
-            description="Feita no forno à lenha com ingredientes selecionados."
-            price="45,00"
-          />
-          <MenuItem
-            img="https://images.unsplash.com/photo-1613141411254-98a2d718f506?q=80&w=1400"
-            title="Sobremesas Gourmet"
-            description="Finalize sua refeição com um toque doce e sofisticado."
-            price="18,50"
-          />
+  <!-- Categoria Salgados assados -->
+  <section class="categoria" aria-label="Salgados assados">
+    <h2>Salgados assados</h2>
+    <div class="itens-cardapio">
+      <article class="item" tabindex="0">
+        <img src="imagens/salgado1.jpg" alt="Coxinha assada" />
+        <div class="info-item">
+          <h3 class="nome-item">Coxinha Assada</h3>
+          <p class="descricao-item">Massa leve, recheio cremoso de frango.</p>
+          <a href="https://wa.me/5511999999999?text=Olá,%20quero%20fazer%20pedido%20da%20Coxinha%20Assada" class="btn-pedir" target="_blank" rel="noopener">Peça Agora</a>
         </div>
-      </section>
-    );
+      </article>
 
-    const Footer = () => (
-      <footer>
-        <div className="footer-content container">
-          <p>&copy; 2025 Croc Restaurante. Todos os direitos reservados.</p>
+      <article class="item" tabindex="0">
+        <img src="imagens/salgado2.jpg" alt="Risoles assado" />
+        <div class="info-item">
+          <h3 class="nome-item">Risoles Assado</h3>
+          <p class="descricao-item">Recheio de presunto e queijo, massa crocante.</p>
+          <a href="https://wa.me/5511999999999?text=Olá,%20quero%20fazer%20pedido%20do%20Risoles%20Assado" class="btn-pedir" target="_blank" rel="noopener">Peça Agora</a>
         </div>
-      </footer>
-    );
+      </article>
+    </div>
+  </section>
 
-    const WhatsApp = () => (
-      <a href="https://wa.me/5541999999999" className="whatsapp-float" target="_blank" aria-label="WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-          <path d="M16.04 2.002c-7.749 0-14.04 6.292-14.04 14.04 0 2.48.662 4.902 1.915 7.038l-2.02 7.268 7.446-1.964c2.067 1.139 4.414 1.74 6.695 1.74h.003c7.747 0 14.04-6.292 14.04-14.04s-6.293-14.04-14.04-14.04zm0 25.61c-2.054 0-4.121-.55-5.924-1.59l-.425-.252-4.419 1.165 1.186-4.263-.276-.438c-1.199-1.902-1.832-4.1-1.832-6.32 0-6.518 5.302-11.82 11.82-11.82 6.518 0 11.82 5.302 11.82 11.82s-5.302 11.82-11.82 11.82zm6.446-8.991c-.354-.177-2.096-1.034-2.421-1.15-.325-.119-.563-.177-.8.178s-.917 1.15-1.125 1.387c-.208.236-.412.266-.766.089-.354-.177-1.494-.55-2.844-1.753-1.05-.938-1.76-2.096-1.963-2.45-.204-.354-.022-.546.153-.723.157-.157.354-.412.531-.617.177-.208.236-.354.354-.59.119-.236.06-.443-.03-.62-.089-.178-.8-1.93-1.095-2.645-.288-.694-.58-.6-.8-.611l-.682-.011c-.236 0-.62.089-.946.443s-1.242 1.215-1.242 2.964 1.27 3.438 1.447 3.678c.177.236 2.5 3.82 6.055 5.36.846.364 1.505.581 2.02.743.847.269 1.616.231 2.225.141.678-.101 2.096-.857 2.392-1.686.296-.83.296-1.541.208-1.686-.089-.148-.325-.236-.678-.413z"/>
-        </svg>
-      </a>
-    );
-
-    const Header = () => (
-      <header>
-        <div className="container header-container">
-          <div className="logo">CROC</div>
-          <nav>
-            <a href="index.html">Início</a>
-            <a href="menu.html" className="active">Menu</a>
-            <a href="galeria.html">Galeria</a>
-            <a href="contato.html">Contato</a>
-          </nav>
+  <!-- Categoria Café da manhã -->
+  <section class="categoria" aria-label="Café da manhã">
+    <h2>Café da manhã</h2>
+    <div class="itens-cardapio">
+      <article class="item" tabindex="0">
+        <img src="imagens/cafe1.jpg" alt="Pão de queijo tradicional" />
+        <div class="info-item">
+          <h3 class="nome-item">Pão de Queijo Tradicional</h3>
+          <p class="descricao-item">Macio, quentinho e saboroso para começar o dia.</p>
+          <a href="https://wa.me/5511999999999?text=Olá,%20quero%20fazer%20pedido%20do%20Pão%20de%20Queijo%20Tradicional" class="btn-pedir" target="_blank" rel="noopener">Peça Agora</a>
         </div>
-      </header>
-    );
+      </article>
 
-    function App() {
-      return (
-        <>
-          <Header />
-          <Menu />
-          <Footer />
-          <WhatsApp />
-        </>
-      );
-    }
+      <article class="item" tabindex="0">
+        <img src="imagens/cafe2.jpg" alt="Café especial Croc" />
+        <div class="info-item">
+          <h3 class="nome-item">Café Especial Croc</h3>
+          <p class="descricao-item">Café fresco, 100% arábica, perfeito para acompanhar.</p>
+          <a href="https://wa.me/5511999999999?text=Olá,%20quero%20fazer%20pedido%20do%20Café%20Especial%20Croc" class="btn-pedir" target="_blank" rel="noopener">Peça Agora</a>
+        </div>
+      </article>
+    </div>
+  </section>
 
-    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-  </script>
+  <!-- Categoria Por tempo limitado -->
+  <section class="categoria" aria-label="Por tempo limitado">
+    <h2>Por tempo limitado</h2>
+    <div class="itens-cardapio">
+      <article class="item" tabindex="0">
+        <img src="imagens/tempo1.jpg" alt="Croissant recheado" />
+        <div class="info-item">
+          <h3 class="nome-item">Croissant Recheado</h3>
+          <p class="descricao-item">Massa folhada crocante com recheio de queijo brie e geleia.</p>
+          <a href="https://wa.me/5511999999999?text=Olá,%20quero%20fazer%20pedido%20do%20Croissant%20Recheado" class="btn-pedir" target="_blank" rel="noopener">Peça Agora</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Categoria Linha Croc por tamanho -->
+  <section class="categoria" aria-label="Linha Croc por tamanho">
+    <h2>Linha Croc por tamanho</h2>
+    <div class="itens-cardapio">
+      <article class="item" tabindex="0">
+        <img src="imagens/linha1.jpg" alt="Croquete pequeno" />
+        <div class="info-item">
+          <h3 class="nome-item">Croquete Pequeno</h3>
+          <p class="descricao-item">Pequenos e crocantes, perfeitos para petiscar.</p>
+          <a href="https://wa.me/5511999999999?text=Olá,%20quero%20fazer%20pedido%20do%20Croquete%20Pequeno" class="btn-pedir" target="_blank" rel="noopener">Peça Agora</a>
+        </div>
+      </article>
+
+      <article class="item" tabindex="0">
+        <img src="imagens/linha2.jpg" alt="Croquete médio" />
+        <div class="info-item">
+          <h3 class="nome-item">Croquete Médio</h3>
+          <p class="descricao-item">Ideal para lanches e reuniões, sabor equilibrado.</p>
+          <a href="https://wa.me/5511999999999?text=Olá,%20quero%20fazer%20pedido%20do%20Croquete%20Médio" class="btn-pedir" target="_blank" rel="noopener">Peça Agora</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Categoria Para empresas/eventos -->
+  <section class="categoria" aria-label="Para empresas e eventos">
+    <h2>Para empresas/eventos</h2>
+    <div class="itens-cardapio">
+      <article class="item" tabindex="0">
+        <img src="imagens/evento1.jpg" alt="Buffet Croc para eventos" />
+        <div class="info-item">
+          <h3 class="nome-item">Buffet Croc</h3>
+          <p class="descricao-item">Opções variadas para eventos e confraternizações.</p>
+          <a href="https://wa.me/5511999999999?text=Olá,%20quero%20informações%20sobre%20Buffet%20Croc" class="btn-pedir" target="_blank" rel="noopener">Peça Agora</a>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Croc. Todos os direitos reservados.
+</footer>
 </body>
 </html>
