@@ -4,85 +4,182 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Croc - Frango Assado & Salgados</title>
+  
+  <!-- Bootstrap CSS via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  
+  <!-- React e Babel via CDN -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-  <!-- Bootstrap CSS (CDN) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Seu CSS customizado -->
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #fff8f0;
+      font-family: 'Poppins', sans-serif;
+      color: #3c3c3c;
+      scroll-behavior: smooth;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: #d94f1f;
+      letter-spacing: 2px;
+    }
+    .nav-link.active {
+      color: #d94f1f !important;
+      font-weight: 600;
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+    }
+    footer {
+      background-color: #222;
+      color: #fff;
+      padding: 1.5rem 0;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s ease;
+      z-index: 1001;
+    }
+    .whatsapp-float:hover {
+      background-color: #1ebe57;
+    }
+    .whatsapp-float svg {
+      fill: white;
+      width: 28px;
+      height: 28px;
+    }
+  </style>
 </head>
 <body>
+  <div id="root"></div>
 
-  <!-- Navbar responsiva Bootstrap -->
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
-      <div class="container">
-        <a class="navbar-brand fw-bold" href="index.html">Croc</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-          aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link active" href="index.html">Início</a></li>
-            <li class="nav-item"><a class="nav-link" href="menu.html">Cardápio</a></li>
-            <li class="nav-item"><a class="nav-link" href="galeria.html">Galeria</a></li>
-            <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+  <script type="text/babel">
+    const { useState } = React;
 
-  <!-- Seção hero/banner -->
-  <section class="hero d-flex align-items-center text-white text-center" style="background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1200&q=80'); height: 70vh; background-size: cover; background-position: center; position: relative;">
-    <div style="position: absolute; inset: 0; background: rgba(0, 0, 0, 0.5);"></div>
-    <div class="container position-relative">
-      <h1 class="display-4 fw-bold">Bem-vindo ao Croc!</h1>
-      <p class="lead">Seu lugar para os melhores frangos assados e salgadinhos irresistíveis.</p>
-      <a href="menu.html" class="btn btn-danger btn-lg mt-3">Confira nosso Cardápio</a>
-    </div>
-  </section>
-
-  <main class="container mt-5">
-    <section>
-      <h2>Destaques</h2>
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="card shadow-sm">
-            <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Frango Assado" />
-            <div class="card-body">
-              <h3 class="card-title">Frango Assado</h3>
-              <p class="card-text">Tempero especial e assado na brasa para sabor incomparável.</p>
+    function Header() {
+      return (
+        <nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+          <div className="container">
+            <a className="navbar-brand logo" href="#">Croc</a>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarNav">
+              <ul className="navbar-nav ms-auto">
+                <li className="nav-item">
+                  <a className="nav-link active" href="index.html">Início</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="menu.html">Cardápio</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="galeria.html">Galeria</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="contato.html">Contato</a>
+                </li>
+              </ul>
             </div>
           </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card shadow-sm">
-            <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb39?auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="Salgadinhos" />
-            <div class="card-body">
-              <h3 class="card-title">Salgadinhos</h3>
-              <p class="card-text">Coxinhas, croissants e muito mais, fresquinhos e crocantes.</p>
-            </div>
+        </nav>
+      );
+    }
+
+    function DestaqueCard({ img, alt, title, description }) {
+      return (
+        <div className="card shadow-sm mb-4" style={{ maxWidth: "350px", cursor: "pointer" }}>
+          <img src={img} className="card-img-top" alt={alt} style={{ height: "220px", objectFit: "cover" }} />
+          <div className="card-body">
+            <h5 className="card-title text-danger">{title}</h5>
+            <p className="card-text text-secondary">{description}</p>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      );
+    }
 
-  <footer class="bg-light text-center text-muted py-3 mt-5">
-    &copy; 2025 Croc - Todos os direitos reservados.
-  </footer>
+    function Main() {
+      return (
+        <main className="container my-5">
+          <h1 className="mb-3">Bem-vindo ao Croc!</h1>
+          <p className="lead">Seu lugar para os melhores frangos assados e salgadinhos irresistíveis.</p>
 
-  <!-- WhatsApp flutuante -->
-  <a href="https://wa.me/554192141982" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24" width="32" height="32" fill="white">
-      <path d="M20.52 3.48a11.95 11.95 0 0 0-17 16.91L2 22l1.62-4.76a11.95 11.95 0 0 0 16.9-14.1zm-8.42 14.7a7.57 7.57 0 0 1-4.05-1.18l-.29-.17-2.4.64.64-2.34-.19-.3a7.53 7.53 0 0 1 1.18-9.52 7.53 7.53 0 0 1 9.52 1.18 7.57 7.57 0 0 1-6.46 11.59z"/>
-    </svg>
-  </a>
+          <section>
+            <h2 className="text-center text-danger mb-4">Destaques</h2>
+            <div className="d-flex justify-content-center flex-wrap gap-4">
+              <DestaqueCard
+                img="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=600&q=80"
+                alt="Frango Assado"
+                title="Frango Assado"
+                description="Tempero especial e assado na brasa para sabor incomparável."
+              />
+              <DestaqueCard
+                img="https://images.unsplash.com/photo-1562967916-eb82221dfb39?auto=format&fit=crop&w=600&q=80"
+                alt="Salgadinhos"
+                title="Salgadinhos"
+                description="Coxinhas, croissants e muito mais, fresquinhos e crocantes."
+              />
+            </div>
+          </section>
+        </main>
+      );
+    }
 
-  <!-- Bootstrap JS Bundle -->
+    function Footer() {
+      return (
+        <footer>
+          &copy; 2025 Croc - Todos os direitos reservados.
+        </footer>
+      );
+    }
+
+    function WhatsAppFloat() {
+      return (
+        <a
+          href="https://wa.me/554192141982"
+          target="_blank"
+          rel="noopener"
+          className="whatsapp-float"
+          aria-label="WhatsApp"
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M20.52 3.48a11.95 11.95 0 0 0-17 16.91L2 22l1.62-4.76a11.95 11.95 0 0 0 16.9-14.1zm-8.42 14.7a7.57 7.57 0 0 1-4.05-1.18l-.29-.17-2.4.64.64-2.34-.19-.3a7.53 7.53 0 0 1 1.18-9.52 7.53 7.53 0 0 1 9.52 1.18 7.57 7.57 0 0 1-6.46 11.59z" />
+          </svg>
+        </a>
+      );
+    }
+
+    function App() {
+      return (
+        <>
+          <Header />
+          <Main />
+          <Footer />
+          <WhatsAppFloat />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+
+  <!-- Bootstrap JS Bundle via CDN -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
