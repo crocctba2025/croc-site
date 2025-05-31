@@ -3,54 +3,149 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contato - Croc</title>
+  <title>Croc - Contato</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header>
-    <div class="logo">Croc</div>
-    <nav>
-      <a href="index.html">Início</a>
-      <a href="menu.html">Cardápio</a>
-      <a href="galeria.html">Galeria</a>
-      <a href="contato.html">Contato</a>
-    </nav>
-  </header>
+  <div id="root"></div>
 
-  <main class="container">
-    <h1>Contato</h1>
+  <!-- React, ReactDOM e Babel via CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <section class="contact-info">
-      <p><strong>Telefone:</strong> <a href="tel:+554192141982">(41) 9214-1982</a></p>
-      <p><strong>Email:</strong> <a href="mailto:contato@croc.com.br">contato@croc.com.br</a></p>
-      <p><strong>Endereço:</strong> <a href="https://goo.gl/maps/4JgPyY6PMgU3oVhx7" target="_blank" rel="noopener">Rua Exemplo, 123 - Curitiba, PR</a></p>
-    </section>
+  <script type="text/babel">
+    const Header = () => (
+      <header>
+        <div className="container header-container">
+          <div className="logo">CROC</div>
+          <nav>
+            <a href="index.html">Início</a>
+            <a href="menu.html">Menu</a>
+            <a href="galeria.html">Galeria</a>
+            <a href="contato.html" className="active">Contato</a>
+          </nav>
+        </div>
+      </header>
+    );
 
-    <section class="map-container" style="margin-top:1.5rem;">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.9985169675166!2d-49.26910778443953!3d-25.4294182837445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce44f4444f444%3A0x123456789abcdef!2sRua%20Exemplo%2C%20123%2C%20Curitiba!5e0!3m2!1spt-BR!2sbr!4v1581111111111"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
-    </section>
+    const Footer = () => (
+      <footer>
+        <div className="footer-content container">
+          <p>&copy; 2025 Croc Restaurante. Todos os direitos reservados.</p>
+        </div>
+      </footer>
+    );
 
-    <section style="margin-top:2rem;">
-      <h2>Envie sua mensagem</h2>
-      <form class="contact-form" action="#" method="POST" onsubmit="alert('Obrigado pelo contato! Em breve responderemos.'); return false;">
-        <input type="text"
- <input type="text" name="nome" placeholder="Seu nome" required />
-        <input type="email" name="email" placeholder="Seu email" required />
-        <textarea name="mensagem" rows="5" placeholder="Sua mensagem" required></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-    </section>
-  </main>
+    const WhatsApp = () => (
+      <a href="https://wa.me/5541999999999" className="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="#25D366" width="32" height="32">
+          <path d="M16.04 2.002c-7.749 0-14.04 6.292-14.04 14.04 0 2.48.662 4.902 1.915 7.038l-2.02 7.268 7.446-1.964c2.067 1.139 4.414 1.74 6.695 1.74h.003c7.747 0 14.04-6.292 14.04-14.04s-6.293-14.04-14.04-14.04zm0 25.61c-2.054 0-4.121-.55-5.924-1.59l-.425-.252-4.419 1.165 1.186-4.263-.276-.438c-1.199-1.902-1.832-4.1-1.832-6.32 0-6.518 5.302-11.82 11.82-11.82 6.518 0 11.82 5.302 11.82 11.82s-5.302 11.82-11.82 11.82zm6.446-8.991c-.354-.177-2.096-1.034-2.421-1.15-.325-.119-.563-.177-.8.178s-.917 1.15-1.125 1.387c-.208.236-.412.266-.766.089-.354-.177-1.494-.55-2.844-1.753-1.05-.938-1.76-2.096-1.963-2.45-.204-.354-.022-.546.153-.723.157-.157.354-.412.531-.617.177-.208.236-.354.354-.59.119-.236.06-.443-.03-.62-.089-.178-.8-1.93-1.095-2.645-.288-.694-.58-.6-.8-.611l-.682-.011c-.236 0-.62.089-.946.443s-1.242 1.215-1.242 2.964 1.27 3.438 1.447 3.678c.177.236 2.5 3.82 6.055 5.36.846.364 1.505.581 2.02.743.847.269 1.616.231 2.225.141.678-.101 2.096-.857 2.392-1.686.296-.83.296-1.541.208-1.686-.089-.148-.325-.236-.678-.413z"/>
+        </svg>
+      </a>
+    );
 
-  <!-- Botão fixo WhatsApp -->
-  <a href="https://wa.me/554192141982" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
-  </a>
+    function ContactForm() {
+      const [formData, setFormData] = React.useState({
+        nome: '',
+        email: '',
+        mensagem: ''
+      });
 
+      const [errors, setErrors] = React.useState({});
+      const [enviado, setEnviado] = React.useState(false);
+
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({ ...prev, [name]: value }));
+        setErrors(prev => ({ ...prev, [name]: null }));
+      };
+
+      const validate = () => {
+        const newErrors = {};
+        if (!formData.nome.trim()) newErrors.nome = 'Por favor, informe seu nome.';
+        if (!formData.email.trim()) {
+          newErrors.email = 'Por favor, informe seu e-mail.';
+        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+          newErrors.email = 'E-mail inválido.';
+        }
+        if (!formData.mensagem.trim()) newErrors.mensagem = 'Por favor, escreva sua mensagem.';
+        return newErrors;
+      };
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        const validationErrors = validate();
+        if (Object.keys(validationErrors).length > 0) {
+          setErrors(validationErrors);
+          return;
+        }
+        // Aqui você pode integrar com backend ou serviço de envio de email
+        setEnviado(true);
+        setFormData({ nome: '', email: '', mensagem: '' });
+      };
+
+      return (
+        <section className="contato container">
+          <h2>Fale Conosco</h2>
+          {enviado && <p className="success-message">Mensagem enviada com sucesso! Obrigado por entrar em contato.</p>}
+          <form onSubmit={handleSubmit} noValidate>
+            <label htmlFor="nome">Nome:</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              value={formData.nome}
+              onChange={handleChange}
+              className={errors.nome ? 'input-error' : ''}
+              placeholder="Seu nome"
+            />
+            {errors.nome && <span className="error-message">{errors.nome}</span>}
+
+            <label htmlFor="email">E-mail:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              className={errors.email ? 'input-error' : ''}
+              placeholder="seu@email.com"
+            />
+            {errors.email && <span className="error-message">{errors.email}</span>}
+
+            <label htmlFor="mensagem">Mensagem:</label>
+            <textarea
+              id="mensagem"
+              name="mensagem"
+              rows="5"
+              value={formData.mensagem}
+              onChange={handleChange}
+              className={errors.mensagem ? 'input-error' : ''}
+              placeholder="Escreva sua mensagem aqui..."
+            ></textarea>
+            {errors.mensagem && <span className="error-message">{errors.mensagem}</span>}
+
+            <button type="submit">Enviar</button>
+          </form>
+        </section>
+      );
+    }
+
+    function App() {
+      return (
+        <>
+          <Header />
+          <ContactForm />
+          <Footer />
+          <WhatsApp />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
 </body>
 </html>
