@@ -1,254 +1,272 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Croc - Do forno direto para sua festa</title>
-<style>
-  :root {
-    --cor-fundo: #f9f7f1;
-    --cor-texto: #4b3b2b;
-    --cor-destaque: #b68f40;
-    --cor-cinza-claro: #ddd6ca;
-    --cor-hover: #d7c6a3;
-    --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Croc - Frango Assado & Salgados</title>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  
+  <style>
+    /* Reset básico */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+    body {
+      background: #f9f7f1;
+      color: #4b3b2b;
+      line-height: 1.6;
+    }
 
-  body {
-    font-family: var(--fonte-principal);
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
-    line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-  header {
-    background-color: white;
-    border-bottom: 2px solid var(--cor-cinza-claro);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgb(0 0 0 / 0.05);
-  }
+    /* Container principal */
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 20px;
+    }
 
-  nav {
-    max-width: 1200px;
-    margin: auto;
-    padding: 1rem 1.5rem;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
+    /* Header */
+    header {
+      background: #fff;
+      padding: 15px 0;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-  nav a {
-    text-decoration: none;
-    color: var(--cor-texto);
-    font-weight: 600;
-    font-size: 1rem;
-    padding: 0.25rem 0.5rem;
-    border-bottom: 3px solid transparent;
-    transition: border-color 0.3s ease, color 0.3s ease;
-  }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #b27429; /* dourado fosco */
+      letter-spacing: 2px;
+      cursor: default;
+    }
 
-  nav a:hover,
-  nav a:focus {
-    color: var(--cor-destaque);
-    border-color: var(--cor-destaque);
-    outline: none;
-  }
-
-  main {
-    max-width: 1200px;
-    margin: 6rem auto 3rem auto;
-    padding: 0 1rem;
-    flex-grow: 1;
-  }
-
-  /* Banner principal */
-  .banner {
-    position: relative;
-    background: url('imagens/banner-frango.jpg') no-repeat center center/cover;
-    border-radius: 12px;
-    height: 320px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.6);
-    margin-bottom: 3rem;
-    padding: 0 1rem;
-  }
-
-  .banner h1 {
-    font-size: 2.5rem;
-    font-weight: 900;
-    margin-bottom: 0.5rem;
-    text-align: center;
-  }
-
-  .banner p {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
-
-  .btn-primary {
-    background-color: var(--cor-destaque);
-    color: white;
-    font-weight: 700;
-    font-size: 1.1rem;
-    padding: 0.75rem 1.8rem;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-  }
-
-  .btn-primary:hover,
-  .btn-primary:focus {
-    background-color: #a3782c;
-    outline: none;
-  }
-
-  /* Destaques principais */
-  .destaques {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-    gap: 2rem;
-  }
-
-  .card-destaque {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .card-destaque:hover,
-  .card-destaque:focus-within {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 20px rgb(0 0 0 / 0.15);
-    outline: none;
-  }
-
-  .card-destaque img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block;
-  }
-
-  .card-content {
-    padding: 1rem 1.25rem;
-    flex-grow: 1;
-  }
-
-  .card-content h2 {
-    color: var(--cor-destaque);
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    font-size: 1.25rem;
-  }
-
-  .card-content p {
-    font-weight: 500;
-    color: var(--cor-texto);
-  }
-
-  /* Footer */
-  footer {
-    text-align: center;
-    padding: 1.5rem 1rem;
-    background: var(--cor-cinza-claro);
-    color: var(--cor-texto);
-    font-size: 0.9rem;
-  }
-
-  /* Responsividade */
-  @media (max-width: 480px) {
     nav {
-      gap: 1rem;
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      flex-wrap: wrap;
     }
+
     nav a {
-      font-size: 0.9rem;
+      font-weight: 600;
+      color: #6a5834;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
-    .banner {
-      height: 220px;
+
+    nav a:hover {
+      background-color: #b27429;
+      color: #fff;
     }
-    .banner h1 {
-      font-size: 1.8rem;
+
+    /* Banner Principal */
+    #banner {
+      margin-top: 15px;
+      width: 100%;
+      height: 350px;
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgb(178 116 41 / 0.3);
     }
-    .banner p {
+
+    #banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.85);
+      transition: filter 0.3s ease;
+    }
+
+    #banner:hover img {
+      filter: brightness(1);
+    }
+
+    #banner-text {
+      position: absolute;
+      bottom: 25px;
+      left: 25px;
+      color: #f9f7f1;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+
+    #banner-text h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      font-weight: 900;
+      letter-spacing: 3px;
+    }
+
+    #banner-text p {
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    #banner-text button {
+      margin-top: 15px;
+      background-color: #b27429;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+    }
+
+    #banner-text button:hover {
+      background-color: #8c5e1b;
+    }
+
+    /* Seções de Destaque */
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 40px 0;
+    }
+
+    .highlight-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgb(178 116 41 / 0.15);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .highlight-card:hover {
+      transform: translateY(-7px);
+    }
+
+    .highlight-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-bottom: 3px solid #b27429;
+    }
+
+    .highlight-content {
+      padding: 15px 20px;
+    }
+
+    .highlight-content h3 {
+      color: #b27429;
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .highlight-content p {
       font-size: 1rem;
+      color: #6a5834;
+      margin-bottom: 12px;
     }
-    .card-destaque img {
-      height: 140px;
+
+    /* Rodapé */
+    footer {
+      background-color: #b27429;
+      color: #f9f7f1;
+      text-align: center;
+      padding: 20px 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.8px;
     }
-  }
-</style>
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      #banner-text h1 {
+        font-size: 2rem;
+      }
+
+      #banner-text p {
+        font-size: 1.1rem;
+      }
+
+      nav {
+        justify-content: center;
+        gap: 15px;
+      }
+    }
+
+  </style>
 </head>
+
 <body>
-<header>
-  <nav aria-label="Menu principal">
-    <a href="#" tabindex="0">Frangos assados</a>
-    <a href="#" tabindex="0">Salgados assados</a>
-    <a href="#" tabindex="0">Café da manhã</a>
-    <a href="#" tabindex="0">Por tempo limitado</a>
-    <a href="#" tabindex="0">Linha Croc por tamanho</a>
-    <a href="#" tabindex="0">Para empresas/eventos</a>
-  </nav>
-</header>
 
-<main>
-  <section class="banner" role="banner" aria-label="Banner principal com slogan">
-    <h1>Do forno direto para sua festa</h1>
-    <p>Sabor que impressiona!</p>
-    <a href="cardapio.html" class="btn-primary">Veja o Cardápio</a>
-  </section>
+  <header class="container" role="banner">
+    <div class="logo" aria-label="Logo Croc">CROC</div>
+    <nav role="navigation" aria-label="Menu Principal">
+      <a href="menu.html">Frangos Assados</a>
+      <a href="menu.html#salgados-assados">Salgados Assados</a>
+      <a href="menu.html#cafe-manha">Café da Manhã</a>
+      <a href="menu.html#tempo-limitado">Por Tempo Limitado</a>
+      <a href="menu.html#linha-croc">Linha Croc por Tamanho</a>
+      <a href="contato.html">Para Empresas/Eventos</a>
+    </nav>
+  </header>
 
-  <section class="destaques" aria-label="Destaques principais">
-    <article class="card-destaque" tabindex="0">
-      <img src="imagens/frango-destaque.jpg" alt="Frango assado crocante e dourado" />
-      <div class="card-content">
-        <h2>Frango Assado aos Domingos</h2>
-        <p>O melhor frango assado, temperado com carinho, perfeito para sua família.</p>
+  <main class="container" role="main">
+    <!-- Banner Principal -->
+    <section id="banner" aria-label="Banner principal com frango assado">
+      <img src="images/banner-frango.jpg" alt="Frango Assado Croc na mesa com acompanhamentos" />
+      <div id="banner-text">
+        <h1>Do forno direto para sua festa</h1>
+        <p>Sabor que impressiona!</p>
+        <button onclick="window.location.href='menu.html'">Veja o Cardápio</button>
       </div>
-    </article>
-    <article class="card-destaque" tabindex="0">
-      <img src="imagens/encomendas.jpg" alt="Mesa com salgados para festa" />
-      <div class="card-content">
-        <h2>Encomendas para Festas e Eventos</h2>
-        <p>Comida feita sob medida para tornar seu evento inesquecível.</p>
-      </div>
-    </article>
-    <article class="card-destaque" tabindex="0">
-      <img src="imagens/salgados-destaque.jpg" alt="Salgados assados variados" />
-      <div class="card-content">
-        <h2>Salgados Assados Especiais</h2>
-        <p>Salgadinhos de festa com recheios deliciosos e massa leve.</p>
-      </div>
-    </article>
-  </section>
-</main>
+    </section>
 
-<footer>
-  &copy; 2025 Croc - Todos os direitos reservados
-</footer>
+    <!-- Destaques -->
+    <section class="highlights" aria-label="Destaques de produtos Croc">
+
+      <article class="highlight-card" tabindex="0">
+        <img src="images/frango-destaque.jpg" alt="Frango assado Croc dourado e suculento" />
+        <div class="highlight-content">
+          <h3>Frango Assado aos Domingos</h3>
+          <p>O tradicional frango assado Croc, temperado e assado com carinho para você.</p>
+        </div>
+      </article>
+
+      <article class="highlight-card" tabindex="0">
+        <img src="images/encomendas.jpg" alt="Faça sua encomenda para festas" />
+        <div class="highlight-content">
+          <h3>Encomendas para Festas e Eventos</h3>
+          <p>Atendemos pedidos especiais para garantir sabor e qualidade na sua celebração.</p>
+        </div>
+      </article>
+
+      <article class="highlight-card" tabindex="0">
+        <img src="images/salgados-destaque.jpg" alt="Salgados assados Croc variados" />
+        <div class="highlight-content">
+          <h3>Salgados Assados Especiais</h3>
+          <p>Coxinhas, risoles e muito mais, sempre fresquinhos e deliciosos.</p>
+        </div>
+      </article>
+
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <p>© 2025 Croc - Todos os direitos reservados</p>
+    <p>Instagram: <a href="https://instagram.com/itscroc" target="_blank" rel="noopener noreferrer" style="color:#f9f7f1;">@itscroc</a> | Email: <a href="mailto:croc.curitiba@gmail.com" style="color:#f9f7f1;">croc.curitiba@gmail.com</a></p>
+  </footer>
+
 </body>
 </html>
