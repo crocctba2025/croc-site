@@ -3,149 +3,102 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Croc - Contato</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <title>Contato | Croc</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Estilo básico local para a página contato */
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #4b3a2e;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-weight: 700;
+      color: #6f4e37;
+    }
+
+    section.contato-info {
+      background-color: #f9f4ef;
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(107, 78, 55, 0.15);
+    }
+
+    .contato-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      gap: 1rem;
+    }
+
+    .contato-item svg {
+      width: 28px;
+      height: 28px;
+      fill: #6f4e37;
+      flex-shrink: 0;
+    }
+
+    .contato-link {
+      color: #6f4e37;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .contato-link:hover,
+    .contato-link:focus {
+      color: #a9745a;
+      outline: none;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      margin: 3rem 0 1rem;
+      font-size: 0.9rem;
+      color: #4b3a2e;
+    }
+  </style>
 </head>
 <body>
-  <div id="root"></div>
+  <header>
+    <nav class="nav-menu" aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="cardapio.html">Cardápio</a></li>
+        <li><a href="contato.html" aria-current="page">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- React, ReactDOM e Babel via CDN -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <main>
+    <h1>Contato Croc</h1>
 
-  <script type="text/babel">
-    const Header = () => (
-      <header>
-        <div className="container header-container">
-          <div className="logo">CROC</div>
-          <nav>
-            <a href="index.html">Início</a>
-            <a href="menu.html">Menu</a>
-            <a href="galeria.html">Galeria</a>
-            <a href="contato.html" className="active">Contato</a>
-          </nav>
-        </div>
-      </header>
-    );
-
-    const Footer = () => (
-      <footer>
-        <div className="footer-content container">
-          <p>&copy; 2025 Croc Restaurante. Todos os direitos reservados.</p>
-        </div>
-      </footer>
-    );
-
-    const WhatsApp = () => (
-      <a href="https://wa.me/5541999999999" className="whatsapp-float" target="_blank" aria-label="WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="#25D366" width="32" height="32">
-          <path d="M16.04 2.002c-7.749 0-14.04 6.292-14.04 14.04 0 2.48.662 4.902 1.915 7.038l-2.02 7.268 7.446-1.964c2.067 1.139 4.414 1.74 6.695 1.74h.003c7.747 0 14.04-6.292 14.04-14.04s-6.293-14.04-14.04-14.04zm0 25.61c-2.054 0-4.121-.55-5.924-1.59l-.425-.252-4.419 1.165 1.186-4.263-.276-.438c-1.199-1.902-1.832-4.1-1.832-6.32 0-6.518 5.302-11.82 11.82-11.82 6.518 0 11.82 5.302 11.82 11.82s-5.302 11.82-11.82 11.82zm6.446-8.991c-.354-.177-2.096-1.034-2.421-1.15-.325-.119-.563-.177-.8.178s-.917 1.15-1.125 1.387c-.208.236-.412.266-.766.089-.354-.177-1.494-.55-2.844-1.753-1.05-.938-1.76-2.096-1.963-2.45-.204-.354-.022-.546.153-.723.157-.157.354-.412.531-.617.177-.208.236-.354.354-.59.119-.236.06-.443-.03-.62-.089-.178-.8-1.93-1.095-2.645-.288-.694-.58-.6-.8-.611l-.682-.011c-.236 0-.62.089-.946.443s-1.242 1.215-1.242 2.964 1.27 3.438 1.447 3.678c.177.236 2.5 3.82 6.055 5.36.846.364 1.505.581 2.02.743.847.269 1.616.231 2.225.141.678-.101 2.096-.857 2.392-1.686.296-.83.296-1.541.208-1.686-.089-.148-.325-.236-.678-.413z"/>
+    <section class="contato-info" aria-label="Informações de contato">
+      <div class="contato-item">
+        <!-- Ícone Instagram SVG simples -->
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" >
+          <path d="M7.75 2A5.75 5.75 0 002 7.75v8.5A5.75 5.75 0 007.75 22h8.5A5.75 5.75 0 0022 16.25v-8.5A5.75 5.75 0 0016.25 2h-8.5zm7.125 3.625a1.125 1.125 0 110 2.25 1.125 1.125 0 010-2.25zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7z"/>
         </svg>
-      </a>
-    );
+        <a href="https://instagram.com/itscroc" class="contato-link" target="_blank" rel="noopener noreferrer">@itscroc</a>
+      </div>
 
-    function ContactForm() {
-      const [formData, setFormData] = React.useState({
-        nome: '',
-        email: '',
-        mensagem: ''
-      });
+      <div class="contato-item">
+        <!-- Ícone Email SVG simples -->
+        <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24">
+          <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18V8l7.5 6.5L19 8v10H4z"/>
+        </svg>
+        <a href="mailto:croc.curitiba@gmail.com" class="contato-link">croc.curitiba@gmail.com</a>
+      </div>
+    </section>
+  </main>
 
-      const [errors, setErrors] = React.useState({});
-      const [enviado, setEnviado] = React.useState(false);
-
-      const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
-        setErrors(prev => ({ ...prev, [name]: null }));
-      };
-
-      const validate = () => {
-        const newErrors = {};
-        if (!formData.nome.trim()) newErrors.nome = 'Por favor, informe seu nome.';
-        if (!formData.email.trim()) {
-          newErrors.email = 'Por favor, informe seu e-mail.';
-        } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-          newErrors.email = 'E-mail inválido.';
-        }
-        if (!formData.mensagem.trim()) newErrors.mensagem = 'Por favor, escreva sua mensagem.';
-        return newErrors;
-      };
-
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        const validationErrors = validate();
-        if (Object.keys(validationErrors).length > 0) {
-          setErrors(validationErrors);
-          return;
-        }
-        // Aqui você pode integrar com backend ou serviço de envio de email
-        setEnviado(true);
-        setFormData({ nome: '', email: '', mensagem: '' });
-      };
-
-      return (
-        <section className="contato container">
-          <h2>Fale Conosco</h2>
-          {enviado && <p className="success-message">Mensagem enviada com sucesso! Obrigado por entrar em contato.</p>}
-          <form onSubmit={handleSubmit} noValidate>
-            <label htmlFor="nome">Nome:</label>
-            <input
-              type="text"
-              id="nome"
-              name="nome"
-              value={formData.nome}
-              onChange={handleChange}
-              className={errors.nome ? 'input-error' : ''}
-              placeholder="Seu nome"
-            />
-            {errors.nome && <span className="error-message">{errors.nome}</span>}
-
-            <label htmlFor="email">E-mail:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className={errors.email ? 'input-error' : ''}
-              placeholder="seu@email.com"
-            />
-            {errors.email && <span className="error-message">{errors.email}</span>}
-
-            <label htmlFor="mensagem">Mensagem:</label>
-            <textarea
-              id="mensagem"
-              name="mensagem"
-              rows="5"
-              value={formData.mensagem}
-              onChange={handleChange}
-              className={errors.mensagem ? 'input-error' : ''}
-              placeholder="Escreva sua mensagem aqui..."
-            ></textarea>
-            {errors.mensagem && <span className="error-message">{errors.mensagem}</span>}
-
-            <button type="submit">Enviar</button>
-          </form>
-        </section>
-      );
-    }
-
-    function App() {
-      return (
-        <>
-          <Header />
-          <ContactForm />
-          <Footer />
-          <WhatsApp />
-        </>
-      );
-    }
-
-    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-  </script>
+  <footer>
+    &copy; 2025 Croc. Todos os direitos reservados.
+  </footer>
 </body>
 </html>
