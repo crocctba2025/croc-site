@@ -3,66 +3,113 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cardápio - Croc</title>
+  <title>Croc - Menu</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header>
-    <div class="logo">Croc</div>
-    <nav>
-      <a href="index.html">Início</a>
-      <a href="menu.html">Cardápio</a>
-      <a href="galeria.html">Galeria</a>
-      <a href="contato.html">Contato</a>
-    </nav>
-  </header>
+  <div id="root"></div>
 
-  <main class="container">
-    <h1>Cardápio</h1>
+  <!-- React, ReactDOM e Babel via CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <section class="menu-section">
-      <h2>Assados</h2>
-      <div class="menu-item">
-        <div class="name">Frango Assado</div>
-        <div class="price">--</div>
-      </div>
-      <div class="menu-item">
-        <div class="name">Coxa e Sobrecoxa</div>
-        <div class="price">--</div>
-      </div>
-    </section>
+  <script type="text/babel">
+    const Header = () => (
+      <header>
+        <div className="container header-container">
+          <div className="logo">CROC</div>
+          <nav>
+            <a href="index.html">Início</a>
+            <a href="menu.html" className="active">Menu</a>
+            <a href="galeria.html">Galeria</a>
+            <a href="contato.html">Contato</a>
+          </nav>
+        </div>
+      </header>
+    );
 
-    <section class="menu-section">
-      <h2>Salgadinhos</h2>
-      <div class="menu-item">
-        <div class="name">Coxinha</div>
-        <div class="price">--</div>
+    const MenuItem = ({ img, title, description, price }) => (
+      <div className="card menu-card">
+        <img src={img} alt={title} />
+        <div className="menu-info">
+          <h3>{title}</h3>
+          <p>{description}</p>
+          <span className="price">R$ {price}</span>
+        </div>
       </div>
-      <div class="menu-item">
-        <div class="name">Croissant Salgado</div>
-        <div class="price">--</div>
-      </div>
-    </section>
+    );
 
-    <section class="menu-section">
-      <h2>Sobremesas</h2>
-      <div class="menu-item">
-        <div class="name">Pudim</div>
-        <div class="price">--</div>
-      </div>
-      <div class="menu-item">
-        <div class="name">Mousse de Maracujá</div>
-        <div class="price">--</div>
-      </div>
-    </section>
-  </main>
+    const Menu = () => (
+      <section className="menu container">
+        <h2>Nosso Cardápio</h2>
+        <div className="cards">
+          <MenuItem
+            img="https://images.unsplash.com/photo-1606755962778-bb4c882c7d88?q=80&w=1400"
+            title="Hambúrguer Artesanal"
+            description="Carne suculenta, queijo derretido e pão fresquinho."
+            price="32,90"
+          />
+          <MenuItem
+            img="https://images.unsplash.com/photo-1598515214121-913e6e165f7f?q=80&w=1400"
+            title="Pizza Crocante"
+            description="Feita no forno à lenha com ingredientes selecionados."
+            price="45,00"
+          />
+          <MenuItem
+            img="https://images.unsplash.com/photo-1613141411254-98a2d718f506?q=80&w=1400"
+            title="Sobremesas Gourmet"
+            description="Finalize sua refeição com um toque doce e sofisticado."
+            price="18,50"
+          />
+        </div>
+      </section>
+    );
 
-  <footer>
-    &copy; 2025 Croc - Todos os direitos reservados.
-  </footer>
+    const Footer = () => (
+      <footer>
+        <div className="footer-content container">
+          <p>&copy; 2025 Croc Restaurante. Todos os direitos reservados.</p>
+        </div>
+      </footer>
+    );
 
-  <a href="https://wa.me/554192141982" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M20.52 3.48a11.95 11.95 0 0 0-17 16.91L2 22l1.62-4.76a11.95 11.95 0 0 0 16.9-14.1zm-8.42 14.7a7.57 7.57 0 0 1-4.05-1.18l-.29-.17-2.4.64.64-2.34-.19-.3a7.53 7.53 0 0 1 1.18-9.52 7.53 7.53 0 0 1 9.52 1.18 7.57 7.57 0 0 1-6.46 11.59z"/></svg>
-  </a>
+    const WhatsApp = () => (
+      <a href="https://wa.me/5541999999999" className="whatsapp-float" target="_blank" aria-label="WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+          <path d="M16.04 2.002c-7.749 0-14.04 6.292-14.04 14.04 0 2.48.662 4.902 1.915 7.038l-2.02 7.268 7.446-1.964c2.067 1.139 4.414 1.74 6.695 1.74h.003c7.747 0 14.04-6.292 14.04-14.04s-6.293-14.04-14.04-14.04zm0 25.61c-2.054 0-4.121-.55-5.924-1.59l-.425-.252-4.419 1.165 1.186-4.263-.276-.438c-1.199-1.902-1.832-4.1-1.832-6.32 0-6.518 5.302-11.82 11.82-11.82 6.518 0 11.82 5.302 11.82 11.82s-5.302 11.82-11.82 11.82zm6.446-8.991c-.354-.177-2.096-1.034-2.421-1.15-.325-.119-.563-.177-.8.178s-.917 1.15-1.125 1.387c-.208.236-.412.266-.766.089-.354-.177-1.494-.55-2.844-1.753-1.05-.938-1.76-2.096-1.963-2.45-.204-.354-.022-.546.153-.723.157-.157.354-.412.531-.617.177-.208.236-.354.354-.59.119-.236.06-.443-.03-.62-.089-.178-.8-1.93-1.095-2.645-.288-.694-.58-.6-.8-.611l-.682-.011c-.236 0-.62.089-.946.443s-1.242 1.215-1.242 2.964 1.27 3.438 1.447 3.678c.177.236 2.5 3.82 6.055 5.36.846.364 1.505.581 2.02.743.847.269 1.616.231 2.225.141.678-.101 2.096-.857 2.392-1.686.296-.83.296-1.541.208-1.686-.089-.148-.325-.236-.678-.413z"/>
+        </svg>
+      </a>
+    );
+
+    const Header = () => (
+      <header>
+        <div className="container header-container">
+          <div className="logo">CROC</div>
+          <nav>
+            <a href="index.html">Início</a>
+            <a href="menu.html" className="active">Menu</a>
+            <a href="galeria.html">Galeria</a>
+            <a href="contato.html">Contato</a>
+          </nav>
+        </div>
+      </header>
+    );
+
+    function App() {
+      return (
+        <>
+          <Header />
+          <Menu />
+          <Footer />
+          <WhatsApp />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
 </body>
 </html>
