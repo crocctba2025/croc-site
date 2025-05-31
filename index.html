@@ -4,44 +4,60 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Croc - Frango Assado & Salgados</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header>
-    <div class="logo">Croc</div>
-    <nav>
-      <a href="index.html">Início</a>
-      <a href="menu.html">Cardápio</a>
-      <a href="galeria.html">Galeria</a>
-      <a href="contato.html">Contato</a>
-    </nav>
+    <div class="container header-container">
+      <div class="logo">Croc</div>
+      <nav>
+        <a href="index.html" class="active">Início</a>
+        <a href="menu.html">Cardápio</a>
+        <a href="galeria.html">Galeria</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+    </div>
   </header>
 
-  <main class="container">
-    <h1>Bem-vindo ao Croc!</h1>
-    <p>Seu lugar para os melhores frangos assados e salgadinhos irresistíveis.</p>
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>Os Melhores Frangos Assados <br /> e Salgados da Cidade</h1>
+      <p>Tempero especial, assados na brasa, fresquinhos e irresistíveis.</p>
+      <a href="menu.html" class="btn-primary">Veja Nosso Cardápio</a>
+    </div>
+  </section>
 
+  <main class="container">
     <section class="destaques">
       <h2>Destaques</h2>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=600&q=80" alt="Frango Assado" />
-        <h3>Frango Assado</h3>
-        <p>Tempero especial e assado na brasa para sabor incomparável.</p>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb39?auto=format&fit=crop&w=600&q=80" alt="Salgadinhos" />
-        <h3>Salgadinhos</h3>
-        <p>Coxinhas, croissants e muito mais, fresquinhos e crocantes.</p>
+      <div class="cards">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=600&q=80" alt="Frango Assado" />
+          <h3>Frango Assado</h3>
+          <p>Tempero especial e assado na brasa para sabor incomparável.</p>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1562967916-eb82221dfb39?auto=format&fit=crop&w=600&q=80" alt="Salgadinhos" />
+          <h3>Salgadinhos</h3>
+          <p>Coxinhas, croissants e muito mais, fresquinhos e crocantes.</p>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    &copy; 2025 Croc - Todos os direitos reservados.
+    <div class="container footer-content">
+      <p>&copy; 2025 Croc - Todos os direitos reservados.</p>
+      <p>Contato: (41) 9214-1982 | Rua Exemplo, 123 - Curitiba</p>
+    </div>
   </footer>
 
   <a href="https://wa.me/554192141982" target="_blank" rel="noopener" class="whatsapp-float" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M20.52 3.48a11.95 11.95 0 0 0-17 16.91L2 22l1.62-4.76a11.95 11.95 0 0 0 16.9-14.1zm-8.42 14.7a7.57 7.57 0 0 1-4.05-1.18l-.29-.17-2.4.64.64-2.34-.19-.3a7.53 7.53 0 0 1 1.18-9.52 7.53 7.53 0 0 1 9.52 1.18 7.57 7.57 0 0 1-6.46 11.59z"/></svg>
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.52 3.48a11.95 11.95 0 0 0-17 16.91L2 22l1.62-4.76a11.95 11.95 0 0 0 16.9-14.1zm-8.42 14.7a7.57 7.57 0 0 1-4.05-1.18l-.29-.17-2.4.64.64-2.34-.19-.3a7.53 7.53 0 0 1 1.18-9.52 7.53 7.53 0 0 1 9.52 1.18 7.57 7.57 0 0 1-6.46 11.59z"/></svg>
   </a>
+
 </body>
 </html>
