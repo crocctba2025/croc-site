@@ -1,31 +1,151 @@
-/* style.css */
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
 }
 
+/* Corpo e fundo */
 body {
-  background-color: #fefefe;
+  background-color: #fff8f0;
+  color: #333;
   line-height: 1.6;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
-a {
-  color: #e67e22;
+/* Container principal para limitar largura */
+.container {
+  max-width: 1000px;
+  margin: 2rem auto 4rem;
+  padding: 0 1rem;
+  flex: 1;
+}
+
+/* Cabeçalho */
+header {
+  background-color: #e25822;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.6rem;
+  letter-spacing: 2px;
+  user-select: none;
+}
+
+nav a {
+  color: white;
   text-decoration: none;
+  margin-left: 1.5rem;
+  font-weight: 600;
   transition: color 0.3s ease;
 }
 
-a:hover {
-  color: #cf711f;
+nav a:hover {
+  color: #ffd6ba;
 }
 
+/* Títulos */
+h1, h2, h3 {
+  color: #e25822;
+  margin-bottom: 0.5rem;
+}
+
+/* Destaques - seção flexível */
+section {
+  margin-top: 2rem;
+}
+
+section > div {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+section > div > div {
+  background: #fff3e6;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+  flex: 1 1 250px;
+  max-width: 320px;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+  cursor: default;
+}
+
+section > div > div:hover {
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+section img {
+  border-radius: 8px;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+/* Parágrafo de introdução */
+p {
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Rodapé */
+footer {
+  background-color: #e25822;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  user-select: none;
+}
+
+/* WhatsApp flutuante */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 30px;
+  right: 30px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  background-color: #1ebe57;
+}
+
+.whatsapp-float svg {
+  width: 28px;
+  height: 28px;
+  fill: white;
+}
 header {
   background-color: #fff;
   border-bottom: 1px solid #ddd;
